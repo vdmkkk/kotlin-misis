@@ -1,0 +1,11 @@
+package com.example.kotlinmisis.data.remote.dto
+
+data class HabitDto(
+    val id: String,
+    val title: String,
+    val description: String,
+    val frequency: String,
+    val colorHex: String,
+    val createdAt: Long,
+    val lastCompletedDate: String?
+)

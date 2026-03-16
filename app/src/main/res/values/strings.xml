@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Habits Tracker</string>
+    <string name="habits_title">Habits Tracker</string>
+    <string name="sync_button_label">Sync now</string>
+    <string name="syncing_button_label">Syncing...</string>
+    <string name="empty_habits_state">No habits yet. Tap the plus button to create your first habit.</string>
+    <string name="add_habit_content_description">Add habit</string>
+
+    <string name="filter_all">All</string>
+    <string name="filter_active">Active</string>
+    <string name="filter_completed">Completed</string>
+
+    <string name="add_habit_title">Create habit</string>
+    <string name="add_habit_subtitle">Fill in the details for your new habit.</string>
+    <string name="habit_title_label">Habit title</string>
+    <string name="habit_description_label">Description</string>
+    <string name="habit_frequency_label">Frequency</string>
+    <string name="habit_color_label">Color</string>
+    <string name="save_habit_button">Save habit</string>
+    <string name="saving_button_label">Saving...</string>
+    <string name="saving_habit_subtitle">Saving to local database...</string>
+
+    <string name="detail_toolbar_title">Habit detail</string>
+    <string name="detail_streaks_title">Streaks</string>
+    <string name="detail_current_streak">Current streak</string>
+    <string name="detail_best_streak">Best streak</string>
+    <string name="detail_history_title">Completion history</string>
+    <string name="detail_no_history">No completions recorded yet.</string>
+    <string name="detail_delete_button">Delete habit</string>
+    <string name="detail_delete_confirm_title">Delete habit?</string>
+    <string name="detail_delete_confirm_message">This habit and its completion history will be removed permanently.</string>
+    <string name="detail_delete_confirm_yes">Delete</string>
+    <string name="detail_delete_confirm_no">Cancel</string>
+    <string name="detail_deleted_toast">Habit deleted.</string>
+    <string name="detail_not_found">Habit not found.</string>
+    <string name="delete_confirm_message">Delete \"%1$s\"? This cannot be undone.</string>
+
+    <string-array name="habit_frequency_options">
+        <item>Daily</item>
+        <item>Weekly</item>
+    </string-array>
+</resources>
