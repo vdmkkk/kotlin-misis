@@ -24,7 +24,7 @@ class AppContainer(context: Context) {
         // When USE_REAL_BACKEND is true, set BACKEND_URL to the machine running
         // docker compose (use 10.0.2.2 from the Android emulator to reach the host).
         private const val USE_REAL_BACKEND = false
-        private const val BACKEND_URL = "http://10.0.2.2:8000/"
+        private const val BACKEND_URL = "http://10.0.2.2:8182/"
     }
 
     private val gson = Gson()
