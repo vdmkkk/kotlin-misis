@@ -63,13 +63,6 @@
                 android:layout_marginTop="8dp"
                 android:textAppearance="?attr/textAppearanceBodyMedium" />
 
-            <TextView
-                android:id="@+id/detailSyncText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textAppearance="?attr/textAppearanceBodySmall" />
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/detailActionButton"
                 android:layout_width="match_parent"

@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [HabitEntity::class, HabitCompletionEntity::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class HabitsDatabase : RoomDatabase() {

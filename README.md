@@ -43,7 +43,7 @@ Available emulators detected on this machine:
 Start an emulator if one is not already running:
 
 ```powershell
-emulator -avd Pixel_6_Pro_API_33
+emulator -avd Pixel_8_Pro_API_Baklava
 ```
 
 Install the app:

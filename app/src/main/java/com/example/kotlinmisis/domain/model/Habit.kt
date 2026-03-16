@@ -9,7 +9,6 @@ data class Habit(
     val createdAt: Long,
     val lastCompletedDate: String?,
     val completedToday: Boolean,
-    val pendingSync: Boolean,
     val currentStreak: Int,
     val bestStreak: Int,
     val completionDates: List<String>

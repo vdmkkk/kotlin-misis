@@ -78,7 +78,6 @@ class HabitDetailViewModel(
             currentStreakLabel = "${habit.currentStreak} day${if (habit.currentStreak != 1) "s" else ""}",
             bestStreakLabel = "${habit.bestStreak} day${if (habit.bestStreak != 1) "s" else ""}",
             completionHistory = habit.completionDates.take(30),
-            syncLabel = if (habit.pendingSync) "Pending sync" else "Synced",
             actionLabel = if (habit.completedToday) "Undo today" else "Complete today",
             completedToday = habit.completedToday
         )

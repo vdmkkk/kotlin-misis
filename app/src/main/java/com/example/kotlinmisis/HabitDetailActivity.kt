@@ -44,7 +44,6 @@ class HabitDetailActivity : AppCompatActivity() {
     private lateinit var descriptionText: TextView
     private lateinit var frequencyText: TextView
     private lateinit var statusText: TextView
-    private lateinit var syncText: TextView
     private lateinit var actionButton: MaterialButton
     private lateinit var currentStreakText: TextView
     private lateinit var bestStreakText: TextView
@@ -76,7 +75,6 @@ class HabitDetailActivity : AppCompatActivity() {
         descriptionText = findViewById(R.id.detailDescriptionText)
         frequencyText = findViewById(R.id.detailFrequencyText)
         statusText = findViewById(R.id.detailStatusText)
-        syncText = findViewById(R.id.detailSyncText)
         actionButton = findViewById(R.id.detailActionButton)
         currentStreakText = findViewById(R.id.currentStreakText)
         bestStreakText = findViewById(R.id.bestStreakText)
@@ -130,7 +128,6 @@ class HabitDetailActivity : AppCompatActivity() {
         descriptionText.visibility = if (state.description.isBlank()) View.GONE else View.VISIBLE
         frequencyText.text = state.frequencyLabel
         statusText.text = state.statusLabel
-        syncText.text = state.syncLabel
         actionButton.text = state.actionLabel
         currentStreakText.text = state.currentStreakLabel
         bestStreakText.text = state.bestStreakLabel

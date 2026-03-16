@@ -9,6 +9,8 @@ interface HabitsRepository {
 
     fun observeHabitDetail(habitId: String): Flow<Habit?>
 
+    suspend fun refreshHabits()
+
     suspend fun createHabit(
         title: String,
         description: String,
@@ -19,6 +21,4 @@ interface HabitsRepository {
     suspend fun toggleHabitCompletion(habitId: String)
 
     suspend fun deleteHabit(habitId: String)
-
-    suspend fun syncHabits()
 }

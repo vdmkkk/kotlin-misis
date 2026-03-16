@@ -11,6 +11,5 @@ data class HabitEntity(
     val frequency: String,
     val colorHex: String,
     val createdAt: Long,
-    val lastCompletedDate: String?,
-    val pendingSync: Boolean
+    val lastCompletedDate: String?
 )

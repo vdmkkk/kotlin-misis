@@ -37,7 +37,6 @@ class HabitAdapter(
         private val frequencyText: TextView = itemView.findViewById(R.id.habitFrequencyText)
         private val statusText: TextView = itemView.findViewById(R.id.habitStatusText)
         private val streakText: TextView = itemView.findViewById(R.id.habitStreakText)
-        private val syncText: TextView = itemView.findViewById(R.id.habitSyncText)
         private val actionButton: MaterialButton = itemView.findViewById(R.id.completeHabitButton)
 
         fun bind(item: HabitListItemUiModel) {
@@ -48,7 +47,6 @@ class HabitAdapter(
             frequencyText.text = item.frequencyLabel
             statusText.text = item.statusLabel
             streakText.text = item.streakLabel
-            syncText.text = item.syncLabel
             actionButton.text = item.actionLabel
             actionButton.setOnClickListener { onHabitActionClicked(item.id) }
             itemView.setOnClickListener { onHabitClicked(item.id) }

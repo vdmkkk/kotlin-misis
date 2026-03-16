@@ -13,9 +13,18 @@ class HabitDto(BaseModel):
     lastCompletedDate: str | None = None
 
 
-class SyncHabitsRequest(BaseModel):
-    habits: list[HabitDto]
+class CreateHabitRequest(BaseModel):
+    id: str
+    title: str
+    description: str = ""
+    frequency: str = "DAILY"
+    colorHex: str = "#6750A4"
+    createdAt: int
 
 
-class SyncHabitsResponse(BaseModel):
-    uploadedCount: int
+class UpdateHabitRequest(BaseModel):
+    title: str | None = None
+    description: str | None = None
+    frequency: str | None = None
+    colorHex: str | None = None
+    lastCompletedDate: str | None = None

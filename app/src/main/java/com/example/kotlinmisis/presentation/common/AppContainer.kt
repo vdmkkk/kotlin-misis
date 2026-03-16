@@ -10,7 +10,7 @@ import com.example.kotlinmisis.domain.usecase.CreateHabitUseCase
 import com.example.kotlinmisis.domain.usecase.DeleteHabitUseCase
 import com.example.kotlinmisis.domain.usecase.ObserveHabitDetailUseCase
 import com.example.kotlinmisis.domain.usecase.ObserveHabitsUseCase
-import com.example.kotlinmisis.domain.usecase.SyncHabitsUseCase
+import com.example.kotlinmisis.domain.usecase.RefreshHabitsUseCase
 import com.example.kotlinmisis.domain.usecase.ToggleHabitCompletionUseCase
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
@@ -20,9 +20,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class AppContainer(context: Context) {
     companion object {
-        // Toggle to switch between the in-process mock and the real FastAPI backend.
-        // When USE_REAL_BACKEND is true, set BACKEND_URL to the machine running
-        // docker compose (use 10.0.2.2 from the Android emulator to reach the host).
         private const val USE_REAL_BACKEND = false
         private const val BACKEND_URL = "http://10.0.2.2:8182/"
     }
@@ -66,5 +63,5 @@ class AppContainer(context: Context) {
     val createHabitUseCase = CreateHabitUseCase(habitsRepository)
     val toggleHabitCompletionUseCase = ToggleHabitCompletionUseCase(habitsRepository)
     val deleteHabitUseCase = DeleteHabitUseCase(habitsRepository)
-    val syncHabitsUseCase = SyncHabitsUseCase(habitsRepository)
+    val refreshHabitsUseCase = RefreshHabitsUseCase(habitsRepository)
 }

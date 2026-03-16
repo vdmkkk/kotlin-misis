@@ -5,7 +5,6 @@ data class HabitsUiState(
     val habits: List<HabitListItemUiModel> = emptyList(),
     val summaryText: String = "",
     val emptyStateVisible: Boolean = false,
-    val syncInProgress: Boolean = false,
     val selectedFilter: HabitFilter = HabitFilter.ALL
 )
 

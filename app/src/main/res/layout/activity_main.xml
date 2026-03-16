@@ -61,14 +61,6 @@
                     android:layout_height="wrap_content"
                     android:text="@string/filter_completed" />
             </com.google.android.material.chip.ChipGroup>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/syncButton"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/sync_button_label" />
         </LinearLayout>
 
         <ProgressBar

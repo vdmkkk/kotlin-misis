@@ -11,7 +11,6 @@ data class HabitDetailUiState(
     val currentStreakLabel: String = "",
     val bestStreakLabel: String = "",
     val completionHistory: List<String> = emptyList(),
-    val syncLabel: String = "",
     val actionLabel: String = "",
     val completedToday: Boolean = false
 )

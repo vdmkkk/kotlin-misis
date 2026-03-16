@@ -25,22 +25,11 @@ fun HabitEntity.toDomain(
         createdAt = createdAt,
         lastCompletedDate = lastCompletedDate,
         completedToday = lastCompletedDate == today,
-        pendingSync = pendingSync,
         currentStreak = streaks.first,
         bestStreak = streaks.second,
         completionDates = sortedDates
     )
 }
-
-fun HabitEntity.toDto(): HabitDto = HabitDto(
-    id = id,
-    title = title,
-    description = description,
-    frequency = frequency,
-    colorHex = colorHex,
-    createdAt = createdAt,
-    lastCompletedDate = lastCompletedDate
-)
 
 fun HabitDto.toEntity(): HabitEntity = HabitEntity(
     id = id,
@@ -49,8 +38,7 @@ fun HabitDto.toEntity(): HabitEntity = HabitEntity(
     frequency = frequency,
     colorHex = colorHex,
     createdAt = createdAt,
-    lastCompletedDate = lastCompletedDate,
-    pendingSync = false
+    lastCompletedDate = lastCompletedDate
 )
 
 private fun computeStreaks(

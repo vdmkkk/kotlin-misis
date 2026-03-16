@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">Habits Tracker</string>
     <string name="habits_title">Habits Tracker</string>
-    <string name="sync_button_label">Sync now</string>
-    <string name="syncing_button_label">Syncing...</string>
     <string name="empty_habits_state">No habits yet. Tap the plus button to create your first habit.</string>
     <string name="add_habit_content_description">Add habit</string>
 
@@ -18,7 +16,7 @@
     <string name="habit_color_label">Color</string>
     <string name="save_habit_button">Save habit</string>
     <string name="saving_button_label">Saving...</string>
-    <string name="saving_habit_subtitle">Saving to local database...</string>
+    <string name="saving_habit_subtitle">Saving...</string>
 
     <string name="detail_toolbar_title">Habit detail</string>
     <string name="detail_streaks_title">Streaks</string>

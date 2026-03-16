@@ -20,7 +20,6 @@ import com.example.kotlinmisis.presentation.habits.list.HabitsUiState
 import com.example.kotlinmisis.presentation.habits.list.HabitsViewModel
 import com.example.kotlinmisis.presentation.habits.list.SwipeToDeleteCallback
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -34,8 +33,8 @@ class MainActivity : AppCompatActivity() {
         HabitsViewModel.Factory(
             observeHabitsUseCase = app.observeHabitsUseCase,
             toggleHabitCompletionUseCase = app.toggleHabitCompletionUseCase,
-            syncHabitsUseCase = app.syncHabitsUseCase,
-            deleteHabitUseCase = app.deleteHabitUseCase
+            deleteHabitUseCase = app.deleteHabitUseCase,
+            refreshHabitsUseCase = app.refreshHabitsUseCase
         )
     }
 
@@ -50,7 +49,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var emptyStateText: TextView
     private lateinit var loadingIndicator: ProgressBar
     private lateinit var habitsRecyclerView: RecyclerView
-    private lateinit var syncButton: MaterialButton
     private lateinit var addHabitButton: FloatingActionButton
     private lateinit var filterChipGroup: ChipGroup
     private lateinit var chipAll: Chip
@@ -70,6 +68,11 @@ class MainActivity : AppCompatActivity() {
         observeViewModel()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.onResume()
+    }
+
     private fun bindViews() {
         rootView = findViewById(R.id.mainContent)
         toolbar = findViewById(R.id.mainToolbar)
@@ -77,7 +80,6 @@ class MainActivity : AppCompatActivity() {
         emptyStateText = findViewById(R.id.emptyStateText)
         loadingIndicator = findViewById(R.id.loadingIndicator)
         habitsRecyclerView = findViewById(R.id.habitsRecyclerView)
-        syncButton = findViewById(R.id.syncButton)
         addHabitButton = findViewById(R.id.addHabitButton)
         filterChipGroup = findViewById(R.id.filterChipGroup)
         chipAll = findViewById(R.id.chipAll)
@@ -109,7 +111,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupActions() {
-        syncButton.setOnClickListener { viewModel.onSyncRequested() }
         addHabitButton.setOnClickListener { viewModel.onAddHabitRequested() }
     }
 
@@ -126,12 +127,6 @@ class MainActivity : AppCompatActivity() {
         summaryText.text = state.summaryText
         emptyStateText.visibility = if (state.emptyStateVisible) View.VISIBLE else View.GONE
         loadingIndicator.visibility = if (state.isLoading) View.VISIBLE else View.GONE
-        syncButton.isEnabled = !state.syncInProgress
-        syncButton.text = if (state.syncInProgress) {
-            getString(R.string.syncing_button_label)
-        } else {
-            getString(R.string.sync_button_label)
-        }
 
         when (state.selectedFilter) {
             HabitFilter.ALL -> chipAll.isChecked = true

@@ -18,9 +18,6 @@ interface HabitsDao {
     @Query("SELECT * FROM habits WHERE id = :habitId LIMIT 1")
     fun observeHabitById(habitId: String): Flow<HabitEntity?>
 
-    @Query("SELECT * FROM habits WHERE pendingSync = 1")
-    suspend fun getPendingSyncHabits(): List<HabitEntity>
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsert(habit: HabitEntity)
 

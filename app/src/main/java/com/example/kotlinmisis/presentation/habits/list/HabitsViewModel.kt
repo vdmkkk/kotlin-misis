@@ -7,7 +7,7 @@ import com.example.kotlinmisis.domain.model.Habit
 import com.example.kotlinmisis.domain.model.HabitFrequency
 import com.example.kotlinmisis.domain.usecase.DeleteHabitUseCase
 import com.example.kotlinmisis.domain.usecase.ObserveHabitsUseCase
-import com.example.kotlinmisis.domain.usecase.SyncHabitsUseCase
+import com.example.kotlinmisis.domain.usecase.RefreshHabitsUseCase
 import com.example.kotlinmisis.domain.usecase.ToggleHabitCompletionUseCase
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,8 +21,8 @@ import kotlinx.coroutines.launch
 class HabitsViewModel(
     private val observeHabitsUseCase: ObserveHabitsUseCase,
     private val toggleHabitCompletionUseCase: ToggleHabitCompletionUseCase,
-    private val syncHabitsUseCase: SyncHabitsUseCase,
-    private val deleteHabitUseCase: DeleteHabitUseCase
+    private val deleteHabitUseCase: DeleteHabitUseCase,
+    private val refreshHabitsUseCase: RefreshHabitsUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(HabitsUiState())
@@ -35,6 +35,11 @@ class HabitsViewModel(
 
     init {
         observeHabits()
+        refresh()
+    }
+
+    fun onResume() {
+        refresh()
     }
 
     fun onAddHabitRequested() {
@@ -72,20 +77,9 @@ class HabitsViewModel(
         applyFilter()
     }
 
-    fun onSyncRequested() {
-        if (_uiState.value.syncInProgress) return
-
+    private fun refresh() {
         viewModelScope.launch {
-            _uiState.update { it.copy(syncInProgress = true) }
-
-            runCatching {
-                syncHabitsUseCase()
-                _events.emit(HabitsUiEvent.ShowMessage("Sync completed."))
-            }.onFailure { throwable ->
-                _events.emit(HabitsUiEvent.ShowMessage(throwable.message ?: "Sync failed."))
-            }
-
-            _uiState.update { it.copy(syncInProgress = false) }
+            refreshHabitsUseCase()
         }
     }
 
@@ -133,7 +127,6 @@ class HabitsViewModel(
             } else {
                 "No streak yet"
             },
-            syncLabel = if (habit.pendingSync) "Pending sync" else "Synced",
             actionLabel = if (habit.completedToday) "Undo" else "Done",
             colorHex = habit.colorHex,
             completedToday = habit.completedToday
@@ -149,13 +142,14 @@ class HabitsViewModel(
     class Factory(
         private val observeHabitsUseCase: ObserveHabitsUseCase,
         private val toggleHabitCompletionUseCase: ToggleHabitCompletionUseCase,
-        private val syncHabitsUseCase: SyncHabitsUseCase,
-        private val deleteHabitUseCase: DeleteHabitUseCase
+        private val deleteHabitUseCase: DeleteHabitUseCase,
+        private val refreshHabitsUseCase: RefreshHabitsUseCase
     ) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return HabitsViewModel(
-                observeHabitsUseCase, toggleHabitCompletionUseCase, syncHabitsUseCase, deleteHabitUseCase
+                observeHabitsUseCase, toggleHabitCompletionUseCase,
+                deleteHabitUseCase, refreshHabitsUseCase
             ) as T
         }
     }
